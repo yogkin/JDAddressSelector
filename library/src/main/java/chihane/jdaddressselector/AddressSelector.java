@@ -220,6 +220,16 @@ public class AddressSelector implements AdapterView.OnItemClickListener {
         return set;
     }
 
+    public void updateIndex(int index){
+
+        if (index<0||index>3){
+            return;
+        }
+
+        tabIndex = index;
+        updateIndicator();
+    }
+
     private class OnProvinceTabClickListener implements View.OnClickListener {
 
         @Override

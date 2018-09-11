@@ -34,13 +34,14 @@ public class MainActivity extends AppCompatActivity implements OnAddressSelected
 
     private BottomDialog dialog;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         FrameLayout frameLayout = (FrameLayout) findViewById(R.id.frameLayout);
-
+        dialog =  new BottomDialog(MainActivity.this);
         assert frameLayout != null;
         Button buttonBottomDialog = (Button) findViewById(R.id.buttonBottomDialog);
         assert buttonBottomDialog != null;
@@ -48,7 +49,6 @@ public class MainActivity extends AppCompatActivity implements OnAddressSelected
             @Override
             public void onClick(View v) {
 //                BottomDialog.show(MainActivity.this, MainActivity.this);
-                dialog = new BottomDialog(MainActivity.this);
                 dialog.setOnAddressSelectedListener(MainActivity.this, new KmAddressProvider());
                 dialog.show();
             }

@@ -38,6 +38,7 @@ public class BottomDialog extends Dialog {
         window.setGravity(Gravity.BOTTOM);
     }
 
+
     public void setOnAddressSelectedListener(OnAddressSelectedListener listener) {
         this.selector.setOnAddressSelectedListener(listener);
     }
@@ -45,6 +46,8 @@ public class BottomDialog extends Dialog {
     public void setOnAddressSelectedListener(OnAddressSelectedListener listener,AddressProvider addressProvider) {
         this.selector.setAddressProvider(addressProvider);
         this.selector.setOnAddressSelectedListener(listener);
+        this.selector.updateIndex(0);
+
     }
 
     public static BottomDialog show(Context context) {
