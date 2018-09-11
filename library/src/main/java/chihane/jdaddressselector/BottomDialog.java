@@ -43,6 +43,11 @@ public class BottomDialog extends Dialog {
         this.selector.setOnAddressSelectedListener(listener);
     }
 
+    public void setOnAddressSelectedListener(OnAddressSelectedListener listener,AddressProvider addressProvider) {
+        this.selector.setAddressProvider(addressProvider);
+        this.selector.setOnAddressSelectedListener(listener);
+    }
+
     public static BottomDialog show(Context context) {
         return show(context, null);
     }

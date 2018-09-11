@@ -12,6 +12,8 @@ public class City extends BaseModel {
     @PrimaryKey
     public int id;
     @Column
+    public String idStr;
+    @Column
     public int province_id;
     @Column
     public String name;

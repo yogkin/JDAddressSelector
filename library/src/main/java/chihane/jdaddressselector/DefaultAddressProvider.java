@@ -31,7 +31,7 @@ public class DefaultAddressProvider implements AddressProvider {
     }
 
     @Override
-    public void provideCitiesWith(int provinceId, final AddressReceiver<City> addressReceiver) {
+    public void provideCitiesWith(int provinceId,String provinceIdStr, final AddressReceiver<City> addressReceiver) {
         final FlowQueryList<City> cityQueryList = SQLite.select()
                 .from(City.class)
                 .where(City_Table.province_id.eq(provinceId))
@@ -40,7 +40,7 @@ public class DefaultAddressProvider implements AddressProvider {
     }
 
     @Override
-    public void provideCountiesWith(int cityId, final AddressReceiver<County> addressReceiver) {
+    public void provideCountiesWith(int cityId,String cityIdStr, final AddressReceiver<County> addressReceiver) {
         final FlowQueryList<County> countyQueryList = SQLite.select()
                 .from(County.class)
                 .where(County_Table.city_id.eq(cityId))
@@ -49,7 +49,7 @@ public class DefaultAddressProvider implements AddressProvider {
     }
 
     @Override
-    public void provideStreetsWith(int countyId, final AddressReceiver<Street> addressReceiver) {
+    public void provideStreetsWith(int countyId,String countyIdStr, final AddressReceiver<Street> addressReceiver) {
         final FlowQueryList<Street> streetQueryList = SQLite.select()
                 .from(Street.class)
                 .where(Street_Table.county_id.eq(countyId))

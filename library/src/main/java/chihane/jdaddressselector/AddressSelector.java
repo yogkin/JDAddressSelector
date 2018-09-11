@@ -323,7 +323,7 @@ public class AddressSelector implements AdapterView.OnItemClickListener {
                 // 更新选中效果
                 provinceAdapter.notifyDataSetChanged();
 
-                retrieveCitiesWith(province.id);
+                retrieveCitiesWith(province.id,province.idStr);
 
                 break;
 
@@ -345,7 +345,7 @@ public class AddressSelector implements AdapterView.OnItemClickListener {
 
                 cityAdapter.notifyDataSetChanged();
 
-                retrieveCountiesWith(city.id);
+                retrieveCountiesWith(city.id,city.idStr);
 
                 break;
 
@@ -363,7 +363,7 @@ public class AddressSelector implements AdapterView.OnItemClickListener {
 
                 countyAdapter.notifyDataSetChanged();
 
-                retrieveStreetsWith(county.id);
+                retrieveStreetsWith(county.id,county.idStr);
 
                 break;
 
@@ -412,9 +412,9 @@ public class AddressSelector implements AdapterView.OnItemClickListener {
         });
     }
 
-    private void retrieveCitiesWith(int provinceId) {
+    private void retrieveCitiesWith(int id, String provinceId) {
         progressBar.setVisibility(View.VISIBLE);
-        addressProvider.provideCitiesWith(provinceId, new AddressProvider.AddressReceiver<City>() {
+        addressProvider.provideCitiesWith(id,provinceId, new AddressProvider.AddressReceiver<City>() {
             @Override
             public void send(List<City> data) {
                 handler.sendMessage(Message.obtain(handler, WHAT_CITIES_PROVIDED, data));
@@ -422,9 +422,9 @@ public class AddressSelector implements AdapterView.OnItemClickListener {
         });
     }
 
-    private void retrieveCountiesWith(int cityId) {
+    private void retrieveCountiesWith(int id, String cityId) {
         progressBar.setVisibility(View.VISIBLE);
-        addressProvider.provideCountiesWith(cityId, new AddressProvider.AddressReceiver<County>() {
+        addressProvider.provideCountiesWith(id,cityId, new AddressProvider.AddressReceiver<County>() {
             @Override
             public void send(List<County> data) {
                 handler.sendMessage(Message.obtain(handler, WHAT_COUNTIES_PROVIDED, data));
@@ -432,9 +432,9 @@ public class AddressSelector implements AdapterView.OnItemClickListener {
         });
     }
 
-    private void retrieveStreetsWith(int countyId) {
+    private void retrieveStreetsWith(int id, String countyId) {
         progressBar.setVisibility(View.VISIBLE);
-        addressProvider.provideStreetsWith(countyId, new AddressProvider.AddressReceiver<Street>() {
+        addressProvider.provideStreetsWith(id,countyId, new AddressProvider.AddressReceiver<Street>() {
             @Override
             public void send(List<Street> data) {
                 handler.sendMessage(Message.obtain(handler, WHAT_STREETS_PROVIDED, data));

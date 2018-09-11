@@ -12,5 +12,7 @@ public class Province extends BaseModel {
     @PrimaryKey
     public int id;
     @Column
+    public String idStr;
+    @Column
     public String name;
 }
