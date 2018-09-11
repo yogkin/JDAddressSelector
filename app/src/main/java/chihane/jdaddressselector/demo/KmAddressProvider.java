@@ -23,7 +23,7 @@ public class KmAddressProvider implements AddressProvider {
     @Override
     public void provideProvinces(final AddressReceiver<Province> addressReceiver) {
         OkGo.<String>post("http://api.123cx.cc/Address/GetProvinces")
-
+                .headers("user_session", "2RHhFcnN")
                 .tag(this)
                 .execute(new StringCallback() {
                     @Override
@@ -56,7 +56,7 @@ public class KmAddressProvider implements AddressProvider {
     @Override
     public void provideCitiesWith(int provinceId,String provinceIdStr, final AddressReceiver<City> addressReceiver) {
         OkGo.<String>post("http://api.123cx.cc/Address/GetCities")
-
+                .headers("user_session", "2RHhFcnN")
                 .params("id", provinceIdStr)
                 .tag(this)
                 .execute(new StringCallback() {
@@ -90,7 +90,7 @@ public class KmAddressProvider implements AddressProvider {
     @Override
     public void provideCountiesWith(int cityId, String cityIdStr, final AddressReceiver<County> addressReceiver) {
         OkGo.<String>post("http://api.123cx.cc/Address/GetCounties")
-
+                .headers("user_session", "2RHhFcnN")
                 .params("id", cityIdStr)
                 .tag(this)
                 .execute(new StringCallback() {
@@ -131,6 +131,9 @@ public class KmAddressProvider implements AddressProvider {
 
     @Override
     public void provideStreetsWith(int countyId,String countyIdStr, AddressReceiver<Street> addressReceiver) {
+
+        Street street = new Street();
+        street.id = countyId;
         addressReceiver.send(new ArrayList<Street>());
 
     }

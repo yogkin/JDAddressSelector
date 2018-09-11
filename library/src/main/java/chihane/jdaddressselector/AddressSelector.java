@@ -24,7 +24,6 @@ import chihane.jdaddressselector.model.City;
 import chihane.jdaddressselector.model.County;
 import chihane.jdaddressselector.model.Province;
 import chihane.jdaddressselector.model.Street;
-import mlxy.utils.Lists;
 
 public class AddressSelector implements AdapterView.OnItemClickListener {
     private static final int INDEX_TAB_PROVINCE = 0;

@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
@@ -27,7 +28,7 @@ import chihane.jdaddressselector.model.City;
 import chihane.jdaddressselector.model.County;
 import chihane.jdaddressselector.model.Province;
 import chihane.jdaddressselector.model.Street;
-import mlxy.utils.T;
+
 
 public class MainActivity extends AppCompatActivity implements OnAddressSelectedListener {
 
@@ -62,7 +63,8 @@ public class MainActivity extends AppCompatActivity implements OnAddressSelected
                         (county == null ? "" : "\n" + county.name) +
                         (street == null ? "" : "\n" + street.name);
 
-        T.showShort(this, s);
+        Toast.makeText(MainActivity.this,s, Toast.LENGTH_SHORT).show();
+
         dialog.dismiss();
     }
 }

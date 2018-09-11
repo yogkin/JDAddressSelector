@@ -6,9 +6,8 @@ import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
 
-import mlxy.utils.Dev;
-
 public class BottomDialog extends Dialog {
+    private  Context mContext;
     private AddressSelector selector;
 
     public BottomDialog(Context context) {
@@ -33,7 +32,7 @@ public class BottomDialog extends Dialog {
         Window window = getWindow();
         WindowManager.LayoutParams params = window.getAttributes();
         params.width = WindowManager.LayoutParams.MATCH_PARENT;
-        params.height = Dev.dp2px(context, 256);
+        params.height = dp2px(context, 256);
         window.setAttributes(params);
 
         window.setGravity(Gravity.BOTTOM);
@@ -58,5 +57,18 @@ public class BottomDialog extends Dialog {
         dialog.show();
 
         return dialog;
+    }
+
+    /**
+     * dp 转 px
+     *
+     *
+     * @param context
+     * @param dpValue dp 值
+     * @return px 值
+     */
+    public static int dp2px(Context context, final float dpValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
     }
 }
