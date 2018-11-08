@@ -19,7 +19,7 @@
 
     dependencies {
         ...
-        compile 'com.github.chihane:JDAddressSelector:1.1.4'
+        implementation 'com.github.yogkin:JDAddressSelector:1.1.7'
     }
     
 ## 使用方法
