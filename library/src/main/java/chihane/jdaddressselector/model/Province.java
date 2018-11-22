@@ -1,9 +1,9 @@
 package chihane.jdaddressselector.model;
 
 
+import java.io.Serializable;
 
-
-public class Province {
+public class Province implements Serializable {
 
     public int id;
 
